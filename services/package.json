@@ -1,0 +1,16 @@
+{
+  "name": "gochatservices",
+  "version": "1.0.0",
+  "description": "API end points for the golang cli chat app",
+  "main": "index.js",
+  "dependencies": {
+    "serverless-wsgi": "^1.0.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sharath Huddar",
+  "license": "ISC"
+}

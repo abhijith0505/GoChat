@@ -1,0 +1,24 @@
+service: goChatServices
+
+provider:
+  name: aws
+  runtime: python2.7
+  stage: dev
+  region: ap-southeast-1
+  cfLogs: true
+
+plugins:
+  - serverless-wsgi
+
+functions:
+  api:
+    handler: wsgi.handler
+    events:
+      - http:
+          path: index
+          method: get
+          integration: lambda-proxy
+
+custom:
+  wsgi:
+    app: api.app
