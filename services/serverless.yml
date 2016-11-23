@@ -1,11 +1,25 @@
 service: goChatServices
 
+frameworkVersion: "=1.1.0"
+
 provider:
   name: aws
   runtime: python2.7
   stage: dev
   region: ap-southeast-1
   cfLogs: true
+  memorySize: 512
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Describetable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:ap-southeast-1:*:*"
 
 plugins:
   - serverless-wsgi
@@ -18,6 +32,27 @@ functions:
           path: index
           method: get
           integration: lambda-proxy
+#      - http:
+#          path: /newUser
+
+resources:
+  Resources:
+    goChatUsersTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: username
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: username
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: 'goChatUsers'
+
 
 custom:
   wsgi:
