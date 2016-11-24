@@ -36,8 +36,11 @@ Deploying to AWS
 - Configure AWS CLI. Instructions can be found [here](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 
 - cd into the services directory and install all the required dependencies
-	`cd services`
+
+  `cd services`
+
 	`npm install`
+
 	`pip2 install -t python_modules/ -r requirements.txt`
 
 - Deploy using serverless :
