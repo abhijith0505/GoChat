@@ -32,9 +32,10 @@ functions:
           path: index
           method: get
           integration: lambda-proxy
-#      - http:
-#          path: /newUser
-
+      - http:
+          path: /registerUser
+          method: post
+          integration: lambda-proxy
 resources:
   Resources:
     goChatUsersTable:
