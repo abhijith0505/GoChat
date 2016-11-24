@@ -29,11 +29,7 @@ functions:
     handler: wsgi.handler
     events:
       - http:
-          path: index
-          method: get
-          integration: lambda-proxy
-      - http:
-          path: /registerUser
+          path: registerUser
           method: post
           integration: lambda-proxy
 resources:

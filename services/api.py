@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify, abort
-import requests, time, boto3
+import  time, boto3, sys, os
 from threading import Timer
 from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
 app = Flask(__name__)
-
+here = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(here, "./vendored"))
 dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-1')
 goChatUsersTable = dynamodb.Table('goChatUsers')
 
