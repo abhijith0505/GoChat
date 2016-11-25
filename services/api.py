@@ -80,6 +80,21 @@ def newMessage():
         return "Message sent succesfully"
 
 
+# curl -i -H "Content-Type: application/json" -X POST -d '{"username":"usrnm"}' http://localhost:5000/checkUser
+
+@app.route('/checkUser', methods=['POST'])
+def checkUser():
+    response = goChatUsersTable.get_item(
+        Key={
+            'username': request.json['username']
+        }
+    )
+    try:
+        response['Item']['username']
+        return "Username already exists"
+    except :
+        return "Username does not exist"
+
 # curl -u usrnm:pwd -i http://localhost:5000/getUsers
 
 @app.route('/getUsers', methods=['GET'])
