@@ -72,6 +72,18 @@ def newMessage():
         return "Message sent succesfully"
 
 
+# curl -u usrnm:pwd -i http://localhost:5000/getUsers
+
+@app.route('/getUsers', methods=['GET'])
+@auth.login_required
+def getUsers():
+    response = goChatUsersTable.scan(
+        AttributesToGet = [
+            'username'
+        ],
+        Select = 'SPECIFIC_ATTRIBUTES'
+    )
+    return jsonify(response['Items'])
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)

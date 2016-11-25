@@ -16,7 +16,7 @@ Start the flask server :
 
 
 
- - `npm run local`
+ - `npm run dev`
 
 Deploying to AWS
 -------
