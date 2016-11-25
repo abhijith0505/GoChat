@@ -32,6 +32,10 @@ functions:
           path: registerUser
           method: post
           integration: lambda-proxy
+      - http:
+          path: newMessage
+          method: post
+          integration: lambda-proxy
 resources:
   Resources:
     goChatUsersTable:

@@ -1,11 +1,14 @@
-from flask import Flask, request, jsonify, abort
-import  time, boto3, sys, os
+from flask import Flask, request, jsonify, abort, make_response
+import time, boto3, sys, os, requests
 from threading import Timer
 from flask_httpauth import HTTPBasicAuth
+
 auth = HTTPBasicAuth()
 app = Flask(__name__)
+
 here = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(here, "./python_modules"))
+
 dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-1')
 goChatUsersTable = dynamodb.Table('goChatUsers')
 
@@ -20,7 +23,8 @@ def registerUser():
         abort(400)
     user = {
         'username': request.json['username'],
-        'password': request.json['password']
+        'password': request.json['password'],
+        'newMessages': []
     }
     goChatUsersTable.put_item(
         Item=user
@@ -34,33 +38,61 @@ def registerUser():
 
 
 
-#following code is for Sharath's system as ctrl+C does not seem to kill flask server
-#Enter the following in CLI to kill the server :
-# curl -i -H "Content-Type: application/json" -X POST  http://localhost:5000/kill
-LAST_REQUEST_MS = 0
-@app.before_request
-def update_last_request_ms():
-    global LAST_REQUEST_MS
-    LAST_REQUEST_MS = time.time() * 1000
+#curl -i -H "Content-Type: application/json" -u usrnm:pwd -X POST -d '{"to":"nd","message":"sup"}' http://localhost:5000/newMessage
+
+@app.route('/newMessage', methods=['POST'])
+@auth.login_required
+def newMessage():
+    if not request.json or not 'to' in request.json or not 'message' in request.json:
+        abort(400)
+    response = goChatUsersTable.get_item(
+        Key = {
+            'username': request.json['to']
+        }
+    )
+
+    if not 'Item' in response:
+        abort(400)
+    newMessage = {
+        'from': auth.username(),
+        'message': request.json['message'],
+        'timestamp': int(time.time())
+    }
+    response = goChatUsersTable.update_item(
+        Key={
+            'username': request.json['to']
+        },
+        UpdateExpression="SET newMessages = list_append(newMessages, :i)",
+        ExpressionAttributeValues={
+            ':i': [newMessage]
+        },
+        ReturnValues="UPDATED_NEW"
+    )
+    if response['ResponseMetadata']['HTTPStatusCode'] == 200 and 'Attributes' in response:
+        return "Message sent succesfully"
 
 
-@app.route('/seriouslykill', methods=['POST'])
-def seriouslykill():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-    return "Shutting down..."
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 403)
 
-@app.route('/kill', methods=['POST'])
-def kill():
-    last_ms = LAST_REQUEST_MS
-    def shutdown():
-        if LAST_REQUEST_MS <= last_ms:  # subsequent requests abort shutdown
-            requests.post('http://localhost:5000/seriouslykill')
-        else:
-            pass
+@auth.get_password
+def get_password(username):
+    try:
+        response = goChatUsersTable.get_item(
+            Key = {
+                'username': username
+            }
+        )
+        return response['Item']['password']
+    except Exception as e:
+        raise
+    return None
 
-    Timer(1.0, shutdown).start()  # wait 1 second
-    return "Shutting down..."
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
