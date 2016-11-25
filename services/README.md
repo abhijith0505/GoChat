@@ -16,19 +16,14 @@ Start the flask server :
 
 
 
- - `export FLASK_APP=app.py`
- - `flask run`
+ - `npm run local`
 
 Deploying to AWS
 -------
 
 - Install serverless :
 
-
     `npm install -g serverless`
-
-
-
 
 - Install AWS CLI. Instructions can be found [here](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
 
@@ -39,9 +34,9 @@ Deploying to AWS
 
   `cd services`
 
-	`npm install`
+	`npm run installDep`
 
-	`pip2 install -t python_modules/ -r requirements.txt`
 
 - Deploy using serverless :
-	`serverless deploy`
+
+    `serverless deploy`
