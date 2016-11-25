@@ -4,6 +4,9 @@ import (
 "fmt"
 "log"
 "os"
+"io/ioutil"
+"bytes"
+"net/http"
 "gopkg.in/mgo.v2"
 "gopkg.in/mgo.v2/bson"
 )
@@ -23,11 +26,42 @@ func addSelf() {
     defer session.Close()
     session.SetMode(mgo.Monotonic, true)
 
-    var name,username string
+    fmt.Println("----------Sign Up-----------")
+
+    var name,username,password,password2 string
     fmt.Println("Enter your name:")
     fmt.Scanf("%s", &name)
     fmt.Println("Enter your username:")
     fmt.Scanf("%s", &username)
+    GOTO_passwordMatch:
+    fmt.Println("Enter your password:")
+    fmt.Scanf("%s", &password)
+    fmt.Println("Enter your password again:")
+    fmt.Scanf("%s", &password2)
+
+    if password == password2{
+        fmt.Println("Passwords match!")
+    }else{
+        fmt.Println("Passwords do not match!")
+        goto GOTO_passwordMatch
+    }
+    url := "https://673opvfbcl.execute-api.ap-southeast-1.amazonaws.com/dev/registerUser"
+
+    var jsonprep string = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}"
+    var jsonStr = []byte(jsonprep)
+    
+    req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
+    req.Header.Set("Content-Type", "application/json")
+
+    client := http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        fmt.Println("Error creating!")
+        panic(err)
+    }else{
+        fmt.Println("Created!")
+    }
+    defer resp.Body.Close()
 
     c := session.DB("goChat").C("profile")
 
@@ -57,6 +91,7 @@ func addSelf() {
 
 func main() {
    
+    fmt.Println("###################################################### GOChatCLI ###################################################### ")
 
     if _, err := os.Stat("oneTimerFlag"); os.IsNotExist(err) {
         addSelf()
