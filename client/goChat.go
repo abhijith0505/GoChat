@@ -4,14 +4,12 @@ import (
 "fmt"
 "log"
 "os"
-"io/ioutil"
 "bytes"
 "net/http"
 "gopkg.in/mgo.v2"
 "gopkg.in/mgo.v2/bson"
+"./variables"
 )
-
-var MONGODB_URL string = "mongodb://localhost:27017/goChat"
 
 type Profile struct {
     Name string
@@ -19,7 +17,7 @@ type Profile struct {
 }
 
 func addSelf() {
-    session, err := mgo.Dial(MONGODB_URL)
+    session, err := mgo.Dial(variables.MONGODB_URL)
     if err != nil {
         panic(err)
     }
@@ -45,7 +43,7 @@ func addSelf() {
         fmt.Println("Passwords do not match!")
         goto GOTO_passwordMatch
     }
-    url := "https://673opvfbcl.execute-api.ap-southeast-1.amazonaws.com/dev/registerUser"
+    url := variables.AWSEndPoint + "/register"
 
     var jsonprep string = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}"
     var jsonStr = []byte(jsonprep)
