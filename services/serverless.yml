@@ -1,6 +1,6 @@
 service: goChatServices
 
-frameworkVersion: "=1.1.0"
+frameworkVersion: "=1.2.1"
 
 provider:
   name: aws

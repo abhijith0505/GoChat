@@ -84,6 +84,8 @@ def newMessage():
 
 @app.route('/checkUser', methods=['POST'])
 def checkUser():
+    if not request.json or not 'username' in request.json:
+        abort(400)
     response = goChatUsersTable.get_item(
         Key={
             'username': request.json['username']
@@ -91,9 +93,9 @@ def checkUser():
     )
     try:
         response['Item']['username']
-        return "Username already exists"
-    except :
-        return "Username does not exist"
+        return "true"
+    except:
+        return "false"
 
 # curl -u usrnm:pwd -i http://localhost:5000/getUsers
 
