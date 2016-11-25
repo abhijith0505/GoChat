@@ -33,6 +33,10 @@ functions:
           method: post
           integration: lambda-proxy
       - http:
+          path: checkUser
+          method: post
+          integration: lambda-proxy
+      - http:
           path: newMessage
           method: post
           integration: lambda-proxy
