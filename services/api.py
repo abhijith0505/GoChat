@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, abort, make_response
-import time, boto3, sys, os, requests
+import time, boto3, sys, os, requests, json, decimal
 from threading import Timer
 from flask_httpauth import HTTPBasicAuth
 
@@ -12,7 +12,15 @@ sys.path.append(os.path.join(here, "./python_modules"))
 dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-1')
 goChatUsersTable = dynamodb.Table('goChatUsers')
 
-
+# Helper class to convert a DynamoDB item to JSON.
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            if o % 1 > 0:
+                return float(o)
+            else:
+                return int(o)
+        return super(DecimalEncoder, self).default(o)
 
 
 # Enter the following command in CLI to test this API
@@ -71,6 +79,48 @@ def newMessage():
     if response['ResponseMetadata']['HTTPStatusCode'] == 200 and 'Attributes' in response:
         return "Message sent succesfully"
 
+
+# curl -u usrnm:pwd -i http://localhost:5000/getUsers
+
+@app.route('/getUsers', methods=['GET'])
+@auth.login_required
+def getUsers():
+    response = goChatUsersTable.scan(
+        Select = 'SPECIFIC_ATTRIBUTES',
+        AttributesToGet = [
+            'username'
+        ]
+    )
+    return jsonify(response['Items'])
+
+# curl -u usrnm:pwd http://localhost:5000/getNewMessages
+
+@app.route('/getNewMessages', methods=['GET'])
+@auth.login_required
+def getNewMessages():
+    response= goChatUsersTable.get_item(
+        Key = {
+            'username': auth.username()
+        }
+    )
+    newMessages = response['Item']['newMessages']
+    if newMessages:
+        response = goChatUsersTable.update_item(
+            Key={
+                'username': auth.username()
+            },
+            UpdateExpression="SET newMessages = :i",
+            ExpressionAttributeValues={
+                ':i': []
+            },
+            ReturnValues="UPDATED_NEW"
+        )
+        if not response['Attributes']['newMessages']:
+            return json.dumps(newMessages, cls=DecimalEncoder)
+        else:
+            return "Sync failed"
+    else:
+        return "No new messages"
 
 @app.errorhandler(404)
 def not_found(error):
