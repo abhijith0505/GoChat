@@ -32,7 +32,8 @@ def registerUser():
     user = {
         'username': request.json['username'],
         'password': request.json['password'],
-        'newMessages': []
+        'newMessages': [],
+        'isOnline': False
     }
     goChatUsersTable.put_item(
         Item=user
@@ -44,6 +45,20 @@ def registerUser():
     )
     return jsonify(response), 201
 
+# curl -i -u usrnm:pwd -H "Content-type: application/json" -X POST -d '{"isOnline": true}' http://localhost:5000/setOnlineStatus
+@app.route('/setOnlineStatus', methods=['POST'])
+@auth.login_required
+def setOnlineStatus():
+    response = goChatUsersTable.update_item(
+        Key = {
+            'username': auth.username()
+        },
+        UpdateExpression="SET isOnline = :i",
+        ExpressionAttributeValues = {
+            ':i': request.json['isOnline']
+        }
+    )
+    return jsonify(response)
 
 
 #curl -i -H "Content-Type: application/json" -u usrnm:pwd -X POST -d '{"to":"nd","message":"sup"}' http://localhost:5000/newMessage
@@ -105,7 +120,8 @@ def getUsers():
     response = goChatUsersTable.scan(
         Select = 'SPECIFIC_ATTRIBUTES',
         AttributesToGet = [
-            'username'
+            'username',
+            'online'
         ]
     )
     return jsonify(response['Items'])

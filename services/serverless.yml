@@ -48,6 +48,10 @@ functions:
           path: getNewMessages
           method: get
           integration: lambda-proxy
+      - http:
+          path: setOnlineStatus
+          method: post
+          integration: lambda-proxy
 resources:
   Resources:
     goChatUsersTable:
