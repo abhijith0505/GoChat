@@ -11,7 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export FLASK_APP=api.py && flask run",
-    "installDep": "npm install && pip2 install -t python_modules/ -r requirements.txt"
+    "installDep": "npm install && pip2 install -t python_modules/ -r requirements.txt",
+    "testLocal": "newman run postman/GoChatCLI.postman_collection.json -e postman/GoChatCLILocal.postman_environment.json",
+    "testDeployed": "newman run postman/GoChatCLI.postman_collection.json -e postman/GoChatCLIDeployed.postman_environment.json"
   },
   "author": "Sharath Huddar",
   "license": "ISC"
