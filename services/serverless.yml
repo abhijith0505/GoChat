@@ -33,7 +33,11 @@ functions:
           method: post
           integration: lambda-proxy
       - http:
-          path: checkUser
+          path: removeUser
+          method: get
+          integration: lambda-proxy
+      - http:
+          path: setOnlineStatus
           method: post
           integration: lambda-proxy
       - http:
@@ -41,17 +45,18 @@ functions:
           method: post
           integration: lambda-proxy
       - http:
-          path: getUsers
-          method: get
-          integration: lambda-proxy
-      - http:
           path: getNewMessages
           method: get
           integration: lambda-proxy
       - http:
-          path: setOnlineStatus
+          path: checkUser
           method: post
           integration: lambda-proxy
+      - http:
+          path: getUsers
+          method: get
+          integration: lambda-proxy
+
 resources:
   Resources:
     goChatUsersTable:
