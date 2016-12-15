@@ -1,0 +1,398 @@
+{
+	"variables": [],
+	"info": {
+		"name": "GoChatCLILocal",
+		"_postman_id": "c9f1ca55-6667-8c0a-cab8-f8e13c21ab3f",
+		"description": "Collection to test APIs during local development",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register user.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"User created succesfully\"] = responseBody.has(\"User created succesfully\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/registerUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test\",\"password\":\"test\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register User. Duplication prevention",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Username already exists\"] = responseBody.has(\"Username already exists\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/registerUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test\",\"password\":\"test\"}"
+				},
+				"description": "Request to check that the registerUser API does not overwrite existing user"
+			},
+			"response": []
+		},
+		{
+			"name": "set online status to true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"setIsOnlineTrue\"] = responseBody.has(\"True\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/setOnlineStatus",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isOnline\": true}"
+				},
+				"description": "Sets isOnline status to true"
+			},
+			"response": []
+		},
+		{
+			"name": "set online status to false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"setIsOnlineFalse\"] = responseBody.has(\"False\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/setOnlineStatus",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isOnline\": false}"
+				},
+				"description": "Sets isOnline status to true"
+			},
+			"response": []
+		},
+		{
+			"name": "Send new message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Message sent succesfully\"] = responseBody.has(\"Message sent succesfully\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/newMessage",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"to\":\"test\",\"message\":\"sup\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get new messages",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"timestamp\"] = responseBody.has(\"timestamp\");",
+							"tests[\"message\"] = responseBody.has(\"message\");",
+							"tests[\"from\"] = responseBody.has(\"from\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/getNewMessages",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"to\":\"test\",\"message\":\"sup\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "No new messages",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No new messages\"] = responseBody.has(\"No new messages\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/getNewMessages",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"to\":\"test\",\"message\":\"sup\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "checkUser true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"true\"] = responseBody.has(\"true\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/checkUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "checkUser false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"true\"] = responseBody.has(\"true\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/checkUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"test\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"testUser\"] = responseBody.has(\"test\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/getUsers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isOnline\": true}"
+				},
+				"description": "Sets isOnline status to true"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Remove User\"] = responseBody.has(\"User removed\");",
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/removeUser",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdDp0ZXN0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"isOnline\": true}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

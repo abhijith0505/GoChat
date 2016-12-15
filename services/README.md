@@ -10,13 +10,13 @@ Install all the dependencies :
 
  - `pip2 install -r requirements.txt`
 
-
-
 Start the flask server :
 
-
-
  - `npm run dev`
+
+To test all the APIs locally, open another terminal and run the following command :
+
+ - `npm run testLocal`
 
 Deploying to AWS
 -------
