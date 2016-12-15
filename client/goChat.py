@@ -20,4 +20,9 @@ register = args.register
 if args.register:
      username = raw_input("Username:")
      password = getpass.getpass("Password:")
-
+     response = apiHelper.registerUser(username,password)
+     if response == "exists":
+          print "User exists! Try again"
+          sys.exit(1)
+     else:
+          print "User created!"
