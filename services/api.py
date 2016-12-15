@@ -53,13 +53,13 @@ def registerUser():
     )
     try:
         response['Item']['username']
-        return "Username already exists"
+        return "exists"
     except :
         response = goChatUsersTable.put_item(
             Item=user
         )
 
-        return "User created succesfully"
+        return "created"
 
 
 # curl -u test:test http://localhost:5000/removeUser
