@@ -1,8 +1,9 @@
-package main
+package apiHelper
 
 import (
 "fmt"
 "bytes"
+"gopy"
 "strings"
 "net/http"
 "./variables"

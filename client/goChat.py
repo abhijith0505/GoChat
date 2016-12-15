@@ -1,4 +1,5 @@
 import argparse, getpass, sys
+import apiHelper
 
 
 parser = argparse.ArgumentParser(description='This is terminal chat application')
