@@ -1,3 +1,6 @@
 src/
 oneTimerFlag
 variables.go
+variables/
+goChat*
+test*
