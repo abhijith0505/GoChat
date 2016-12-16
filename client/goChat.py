@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser(description='This is terminal chat application'
 parser.add_argument('-r', '--register', action='store_true', dest='register',
                     help='Register user')
 
-parser.add_argument('-li', '--login', action='store_true', dest='login',
-                    help='Log into account')
+parser.add_argument('-d', '--delete-user', action='store_true', dest='deleteUser',
+                    help='Delete your account')
 
 parser.add_argument('-lo', '--logout', action='store_true', dest='logout',
                     help='Log out')
@@ -22,8 +22,8 @@ if len(sys.argv) < 2:
 args = parser.parse_args()
 
 register = args.register
-login = args.login
-logout = args.logout
+deleteUser = args.deleteUser
+
 
 if register:
      username = raw_input("Username:")
@@ -45,6 +45,12 @@ if register:
           print "Please login"
           parser.print_usage()
 
-if login:
+if deleteUser:
 	username = raw_input("Username:")
 	password = getpass.getpass("Password:")
+	
+	if apiHelper.deleteUser(username,password):
+		print "Your account has been deleted"
+	else:
+		print "Incorrect credentials!"
+		print "You shall have power to delete only your accout"

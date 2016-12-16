@@ -2,6 +2,7 @@ import requests, json
 import variables, pymongo
 from pymongo import MongoClient
 from bson.json_util import dumps
+from requests.auth import HTTPBasicAuth
 
 client = MongoClient()
 db = client['gochat']
@@ -29,6 +30,18 @@ def registerUser(username, password):
 
     return response.text
 
+def deleteUser(username,password):
+	storedHashPassword = db.user.find_one({'username':username})
+
+	if storedHashPassword['password'] == hash_pass(password):
+		requests.get(variables.AWSEndPoint + '/removeUser', auth=(username, password))
+		db.user.drop()
+
+		return True
+	else:
+		return False
+
+
 def hash_pass(password):
     # used to hash the password similar to how MySQL hashes passwords with the password() function.
     import hashlib
@@ -36,3 +49,5 @@ def hash_pass(password):
     hash_password = hashlib.sha1(hash_password).hexdigest()
     hash_password = '*' + hash_password.upper()
     return hash_password
+
+
