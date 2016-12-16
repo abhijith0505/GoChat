@@ -13,6 +13,9 @@ parser.add_argument('-d', '--delete-user', action='store_true', dest='deleteUser
 parser.add_argument('-s', '--send', action='store_true', dest='send',
 					help='To send message')
 
+parser.add_argument('-u', '--unread', action='store_true', dest='unread',
+					help='Read your unread messages')
+
 parser.add_argument('--version', '-v', action='version', version='%(prog)s 1.0')
 
 if len(sys.argv) < 2:
@@ -24,6 +27,7 @@ args = parser.parse_args()
 register = args.register
 deleteUser = args.deleteUser
 send = args.send
+unread = args.unread
 
 if register:
 	username = raw_input("Username:")
@@ -75,3 +79,7 @@ if send:
 		toMessage = raw_input("Message: ")
 
 	print apiHelper.sendMessage(toUsername, toMessage)
+
+if unread:
+	unreadMessages = apiHelper.unreadMessages()
+	print unreadMessages

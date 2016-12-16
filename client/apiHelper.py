@@ -7,6 +7,7 @@ from requests.auth import HTTPBasicAuth
 client = MongoClient()
 db = client['gochat']
 user = db['user']
+messages = db['messages']
 user.ensure_index('username',unique=True)
 
 def checkUser(username):
@@ -53,6 +54,22 @@ def sendMessage(recipient, message):
 
 	return response.text
 
+def unreadMessages():
+	selfUser = db.user.find_one()
+	selfUserName = selfUser['username']
+	selfPassword = selfUser['password']
+
+	#url = variables.AWSEndPoint + "/getNewMessages"
+	#response = requests.get(url, auth=(selfUserName, selfPassword))
+	response = [{"timestamp": 1481886764, "message": "hihhi", "from": "sha"}]
+
+	if "No new messages" in response:
+		return "No new messages"
+	else:
+		print response
+		db.messages.insert(response)
+	return response
+
 
 
 def hash_pass(password):
@@ -63,4 +80,7 @@ def hash_pass(password):
     hash_password = '*' + hash_password.upper()
     return hash_password
 
+def test():
+	response = [{"timestamp": 1481886764, "message": "hihhi", "from": "sha"}]
+	print json.dumps(response)
 
