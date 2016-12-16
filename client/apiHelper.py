@@ -24,7 +24,7 @@ def registerUser(username, password):
     headers = {'Content-type': 'application/json'}
     response = requests.post(url, data=json_data, headers=headers)
     try:
-        db.user.insert_one({'username':username, 'password': hash_pass(password)})
+        db.user.insert_one({'username':username, 'password': (password)})
     except:
         print "nononono"
 
@@ -33,13 +33,26 @@ def registerUser(username, password):
 def deleteUser(username,password):
 	storedHashPassword = db.user.find_one({'username':username})
 
-	if storedHashPassword['password'] == hash_pass(password):
+	if storedHashPassword['password'] == (password):
 		requests.get(variables.AWSEndPoint + '/removeUser', auth=(username, password))
 		db.user.drop()
-
 		return True
 	else:
 		return False
+
+def sendMessage(recipient, message):
+	selfUser = db.user.find_one()
+	selfUserName = selfUser['username']
+	selfPassword = selfUser['password']
+
+	url = variables.AWSEndPoint + "/newMessage"
+	data = {"to": recipient, "message": message}
+	json_data = json.dumps(data)
+	headers = {'Content-type': 'application/json'}
+	response = requests.post(url, auth=(selfUserName, selfPassword), data=json_data, headers=headers)
+
+	return response.text
+
 
 
 def hash_pass(password):
