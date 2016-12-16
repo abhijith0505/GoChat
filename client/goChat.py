@@ -47,8 +47,6 @@ if register:
 		sys.exit(1)
 	else:
 		print "User created!"
-		print "Please login"
-		parser.print_usage()
 
 if deleteUser:
 	username = raw_input("Username:")
