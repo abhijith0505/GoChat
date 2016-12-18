@@ -48,14 +48,16 @@ def sendMessage(recipient, message):
 	selfUser = db.user.find_one()
 	selfUserName = selfUser['username']
 	selfPassword = selfUser['password']
-
-	url = variables.AWSEndPoint + "/newMessage"
-	data = {"to": recipient, "message": message}
-	json_data = json.dumps(data)
-	headers = {'Content-type': 'application/json'}
-	response = requests.post(url, auth=(selfUserName, selfPassword), data=json_data, headers=headers)
-
-	return response.text
+	if "true" in checkUser(recipient):
+		url = variables.AWSEndPoint + "/newMessage"
+		data = {"to": recipient, "message": message}
+		json_data = json.dumps(data)
+		headers = {'Content-type': 'application/json'}
+		response = requests.post(url, auth=(selfUserName, selfPassword), data=json_data, headers=headers)
+		return response.text
+	else:
+		return "No such user exists!"
+	
 
 def unreadMessages():
 	selfUser = db.user.find_one()
