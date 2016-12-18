@@ -59,13 +59,14 @@ if register:
 		print "User already exists in this computer"
 		print "Current version supports only one user per computer"
 		print "Please, use existing user or delete user from your system"
-		print parser.print_help()
+		parser.print_help()
+		print ""
 
 if deleteUser:
 	if apiHelper.deleteUser():
 		print "Your computer is free from GOChatCLI accounts now"
 	else:
-		print "There is nothing to delete, please register an account so that you can delete it later."
+		print "There is nothing to delete, please register an account, so that you can delete it later."
 
 if send:
 	selfUser = db.user.find_one()
@@ -86,8 +87,17 @@ if send:
 
 	print apiHelper.sendMessage(toUsername, toMessage)
 
-
-
-		
-	
+if unread:
+	try:
+		unreadMessages = apiHelper.unreadMessages()
+		unreadMessages = json.loads(unreadMessages)
+		messagesToBeStored = []
+		for msg in unreadMessages:
+			print ('{}: {}'.format(msg['timestamp'], msg['message']))
+			messageToBeStored = {}
+			messageToBeStored['timestamp'] = msg['timestamp']
+			messageToBeStored['message'] = msg['message']
+			messagesToBeStored.append(messageToBeStored)
+	except:
+		print "No New Messages"
 	

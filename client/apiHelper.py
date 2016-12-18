@@ -32,15 +32,17 @@ def registerUser(username, password):
 
     return response.text
 
-def deleteUser(username,password):
-	storedHashPassword = db.user.find_one({'username':username})
-
-	if storedHashPassword['password'] == hash_pass(password):
-		requests.get(variables.AWSEndPoint + '/removeUser', auth=(username, hash_pass(password)))
+def deleteUser():
+	try:
+		selfUser = db.user.find_one()
+		selfUserName = selfUser['username']
+		selfPassword = selfUser['password']
+		requests.get(variables.AWSEndPoint + '/removeUser', auth=(selfUserName, selfPassword))
 		db.user.drop()
 		return True
-	else:
+	except:
 		return False
+
 
 def sendMessage(recipient, message):
 	selfUser = db.user.find_one()
