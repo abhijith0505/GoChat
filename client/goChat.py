@@ -1,6 +1,12 @@
-import argparse, getpass, sys
+import argparse, getpass, sys, json, time, pymongo
+from pymongo import MongoClient
 import apiHelper
 
+client = MongoClient()
+db = client['gochat']
+user = db['user']
+messages = db['messages']
+user.ensure_index('username',unique=True)
 
 parser = argparse.ArgumentParser(description='This is terminal chat application')
 
@@ -8,7 +14,7 @@ parser.add_argument('-r', '--register', action='store_true', dest='register',
 					help='Register user')
 
 parser.add_argument('-d', '--delete-user', action='store_true', dest='deleteUser',
-					help='Delete your account')
+					help='Delete your account. Deletes complete user credentials and messages. You\'ll have to start fresh')
 
 parser.add_argument('-s', '--send', action='store_true', dest='send',
 					help='To send message')
@@ -30,45 +36,47 @@ send = args.send
 unread = args.unread
 
 if register:
-	username = raw_input("Username:")
-	while not username:
-		print "Please choose a username"
+	selfUser = db.user.find_one()
+	if not selfUser:
 		username = raw_input("Username:")
+		while not username:
+			print "Please choose a username"
+			username = raw_input("Username:")
 
-	password = getpass.getpass("Password:")
-	while not password:
-		print "Please choose a password"
 		password = getpass.getpass("Password:")
+		while not password:
+			print "Please choose a password"
+			password = getpass.getpass("Password:")
 
-	response = apiHelper.registerUser(username,password)
+		response = apiHelper.registerUser(username,password)
 
-	if response == "exists":
-		print "User exists! Try again"
-		sys.exit(1)
+		if response == "exists":
+			print "User exists! Try again"
+			sys.exit(1)
+		else:
+			print "User created!"
 	else:
-		print "User created!"
+		print "User already exists in this computer"
+		print "Current version supports only one user per computer"
+		print "Please, use existing user or delete user from your system"
+		print parser.print_help()
 
 if deleteUser:
-	username = raw_input("Username:")
-	while not username:
-		print "Please enter a username"
-		username = raw_input("Username:")
-
-	password = getpass.getpass("Password:")
-	while not password:
-		print "Please enter a password"
-		password = getpass.getpass("Password:")
-
-	if apiHelper.deleteUser(username,password):
-		print "Your account has been deleted"
+	if apiHelper.deleteUser():
+		print "Your computer is free from GOChatCLI accounts now"
 	else:
-		print "Incorrect credentials!"
-		print "Thou shall have power to delete only thy account"
+		print "There is nothing to delete, please register an account so that you can delete it later."
 
 if send:
+	selfUser = db.user.find_one()
+	selfUserName = selfUser['username']
 	toUsername = raw_input("Username of recipient: ")
 	while not toUsername:
 		print "Specify recipient username"
+		toUsername = raw_input("Username of recipient: ")
+
+	while toUsername == selfUserName:
+		print "Why would you want to send yourself a message? :/"
 		toUsername = raw_input("Username of recipient: ")
 	
 	toMessage = raw_input("Message: ")
@@ -78,6 +86,8 @@ if send:
 
 	print apiHelper.sendMessage(toUsername, toMessage)
 
-if unread:
-	unreadMessages = apiHelper.unreadMessages()
-	print unreadMessages
+
+
+		
+	
+	

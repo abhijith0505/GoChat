@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, abort, make_response
 import time
+from datetime import datetime
 import boto3
 import sys
 import os
@@ -111,7 +112,8 @@ def newMessage():
     newMessage = {
         'from': auth.username(),
         'message': request.json['message'],
-        'timestamp': int(time.time())
+        'timestamp': str(datetime.now()),
+        'timestamp_id': int(time.time())
     }
     response = goChatUsersTable.update_item(
         Key={

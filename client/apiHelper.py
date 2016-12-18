@@ -20,22 +20,23 @@ def checkUser(username):
 
 def registerUser(username, password):
     url = variables.AWSEndPoint + "/registerUser"
-    data = {"username": username, "password": password}
+    data = {"username": username, "password": hash_pass(password)}
     json_data = json.dumps(data)
     headers = {'Content-type': 'application/json'}
     response = requests.post(url, data=json_data, headers=headers)
-    try:
-        db.user.insert_one({'username':username, 'password': (password)})
-    except:
-        print "nononono"
+    if response != "exists":
+	    try:
+	        db.user.insert_one({'username':username, 'password': hash_pass(password)})
+	    except:
+	    	pass
 
     return response.text
 
 def deleteUser(username,password):
 	storedHashPassword = db.user.find_one({'username':username})
 
-	if storedHashPassword['password'] == (password):
-		requests.get(variables.AWSEndPoint + '/removeUser', auth=(username, password))
+	if storedHashPassword['password'] == hash_pass(password):
+		requests.get(variables.AWSEndPoint + '/removeUser', auth=(username, hash_pass(password)))
 		db.user.drop()
 		return True
 	else:
@@ -59,16 +60,13 @@ def unreadMessages():
 	selfUserName = selfUser['username']
 	selfPassword = selfUser['password']
 
-	#url = variables.AWSEndPoint + "/getNewMessages"
-	#response = requests.get(url, auth=(selfUserName, selfPassword))
-	response = [{"timestamp": 1481886764, "message": "hihhi", "from": "sha"}]
-
-	if "No new messages" in response:
-		return "No new messages"
-	else:
-		print response
-		db.messages.insert(response)
-	return response
+	url = variables.AWSEndPoint + "/getNewMessages"
+	response = requests.get(url, auth=(selfUserName, selfPassword))
+	
+	data = json.loads(response.text)
+	db.messages.insert(data)
+	
+	return response.text
 
 
 
