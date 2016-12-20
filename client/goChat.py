@@ -70,34 +70,40 @@ if deleteUser:
 
 if send:
 	selfUser = db.user.find_one()
-	selfUserName = selfUser['username']
-	toUsername = raw_input("Username of recipient: ")
-	while not toUsername:
-		print "Specify recipient username"
+	if selfUser:
+		selfUserName = selfUser['username']
 		toUsername = raw_input("Username of recipient: ")
+		while not toUsername:
+			print "Specify recipient username"
+			toUsername = raw_input("Username of recipient: ")
 
-	while toUsername == selfUserName:
-		print "Why would you want to send yourself a message? :/"
-		toUsername = raw_input("Username of recipient: ")
-	
-	toMessage = raw_input("Message: ")
-	while not toMessage:
-		print "Specify message to be sent"
+		while toUsername == selfUserName:
+			print "Why would you want to send yourself a message? :/"
+			toUsername = raw_input("Username of recipient: ")
+
 		toMessage = raw_input("Message: ")
+		while not toMessage:
+			print "Specify message to be sent"
+			toMessage = raw_input("Message: ")
 
-	print apiHelper.sendMessage(toUsername, toMessage)
+		print apiHelper.sendMessage(toUsername, toMessage)
+	else:
+		print "Please register your user first"
 
 if unread:
-	try:
-		unreadMessages = apiHelper.unreadMessages()
-		unreadMessages = json.loads(unreadMessages)
-		messagesToBeStored = []
-		for msg in unreadMessages:
-			print ('{}: {}'.format(msg['timestamp'], msg['message']))
-			messageToBeStored = {}
-			messageToBeStored['timestamp'] = msg['timestamp']
-			messageToBeStored['message'] = msg['message']
-			messagesToBeStored.append(messageToBeStored)
-	except:
-		print "No New Messages"
-	
+	selfUser = db.user.find_one()
+	if selfUser:
+		try:
+			unreadMessages = apiHelper.unreadMessages()
+			unreadMessages = json.loads(unreadMessages)
+			messagesToBeStored = []
+			for msg in unreadMessages:
+				print ('{}: {}'.format(msg['timestamp'], msg['message']))
+				messageToBeStored = {}
+				messageToBeStored['timestamp'] = msg['timestamp']
+				messageToBeStored['message'] = msg['message']
+				messagesToBeStored.append(messageToBeStored)
+		except:
+			print "No New Messages"
+	else:
+		print "Please register your user first"
