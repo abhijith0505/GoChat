@@ -98,7 +98,9 @@ if unread:
 			unreadMessages = json.loads(unreadMessages)
 			messagesToBeStored = []
 			for msg in unreadMessages:
+				print ('From: {}'.format(msg['from']))
 				print ('{}: {}'.format(msg['timestamp'], msg['message']))
+				print "-"*80
 				messageToBeStored = {}
 				messageToBeStored['timestamp'] = msg['timestamp']
 				messageToBeStored['message'] = msg['message']
