@@ -2,12 +2,13 @@ name: gochatcli
 version: 0.0.1
 summary: A command line chat app with a serverless backend
 description: A command line chat app with a serverless backend
-confinement: devmode
+confinement: strict
+grade: stable
 
 apps:
   gochat:
     command: python2 goChat.py
-    plugs: [network]
+    plugs: [home, network, network-bind]
 
 parts:
   gochat:
