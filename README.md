@@ -1,2 +1,2 @@
-# GoChatCLI
-Command Line Chatting tool
+# GoChat
+Command Line Chatting  utility
