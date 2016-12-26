@@ -68,7 +68,7 @@ if register:
 
 elif deleteUser:
 	if apiHelper.deleteUser():
-		print "Your computer is free from GOChatCLI accounts now"
+		print "Your computer is free from GOChat accounts now"
 	else:
 		print "There is nothing to delete, please register an account, so that you can delete it later."
 
