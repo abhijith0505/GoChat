@@ -1,0 +1,288 @@
+Package: flashplugin-installer
+Priority: optional
+Section: multiverse/web
+Installed-Size: 58
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Bart Martens <bartm@knars.be>
+Architecture: amd64
+Source: flashplugin-nonfree
+Version: 24.0.0.186ubuntu0.16.04.1
+Replaces: flashplugin (<< 6), flashplugin-downloader (<< 11.1.102.55ubuntu3), flashplugin-nonfree (<< 11.0.1.152ubuntu1)
+Provides: flashplugin-nonfree
+Depends: debconf (>= 0.5) | debconf-2.0, wget, libgtk2.0-0, fontconfig, libxt6, libxext6, libatk1.0-0, libc6, libcairo2, libexpat1, libfontconfig1, libfreetype6, libglib2.0-0, libice6, libpango1.0-0, libpng12-0, libsm6, libx11-6, libxau6, libxcursor1, libxdmcp6, libxfixes3, libxi6, libxinerama1, libxrandr2, libxrender1, zlib1g, libnss3, libnspr4, libcurl3 | libcurl3-gnutls, libasound2, update-notifier-common (>= 0.119ubuntu2)
+Recommends: libasound2-plugins (>= 1.0.16)
+Suggests: firefox, x-ttcidfont-conf, ttf-mscorefonts-installer, ttf-bitstream-vera | ttf-dejavu, ttf-xfree86-nonfree, xfs
+Conflicts: flashplayer-mozilla, flashplugin (<< 6), flashplugin-nonfree (<< 11.0.1.152ubuntu1), libflashsupport
+Breaks: flashplugin-downloader (<< 11.1.102.55ubuntu3)
+Filename: pool/multiverse/f/flashplugin-nonfree/flashplugin-installer_24.0.0.186ubuntu0.16.04.1_amd64.deb
+Size: 6804
+MD5sum: 947200cc064aeacfc0c58718aa526167
+SHA1: 532540ec4ce25be835fd8b233c95d632fa8f9f3b
+SHA256: cd072262d6e8c5774b85b5ce3c99e486fe7e11c9a95977fc8654c536a63fa16a
+Description: Adobe Flash Player plugin installer
+Multi-Arch: foreign
+Homepage: http://www.adobe.com/products/flashplayer.html
+Npp-Applications: ec8030f7-c20a-464f-9b0e-13a3a9e97384, 92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a, aa5ca914-c309-495d-91cf-3141bbb04115
+Npp-Description: Adobe Flash SWF Player (http://www.adobe.com)
+Npp-File: libflashplayer.so
+Npp-Mimetype: application/x-shockwave-flash
+Npp-Name: Adobe Flash Player (installer)
+Description-md5: a03e9ebc20ce82c05567d088e79bf750
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: libcuda1-331
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: libcuda1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/libcuda1-331_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4814
+MD5sum: b54ad71a96cc6181a1421b00faaceaa2
+SHA1: 4dcecd658a58d34c27239edd7982ed62bff12718
+SHA256: 02d826674ee705df6e1bab4c8cb99bc69c7fb9580c7452e6bc06e6910112da0a
+Description: Transitional package for libcuda1-340
+Description-md5: a10363c018e08f69fb7494b3d411a6f6
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: libcuda1-331-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: libcuda1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/libcuda1-331-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4830
+MD5sum: 6804558a6b307ed1801c52dfbfd7ae75
+SHA1: 4aecb010032a335bf8a07aaa2501cb0c30aeaf3f
+SHA256: f6b13fc77d8cbf55c0722cb726c509f4db5997f009d6bc30c34a98a21488f813
+Description: Transitional package for libcuda1-340
+Description-md5: a10363c018e08f69fb7494b3d411a6f6
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: libcuda1-340-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: libcuda1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/libcuda1-340-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4828
+MD5sum: e0d204d4059fddf8114ddec4938ce399
+SHA1: a8fef6c9753901d747ee4a680fdb569457909bed
+SHA256: 4dce8b309f85dd13b4b453d623da99c60d00c3c62b8238f04545dfdc947ed61e
+Description: Transitional package for libcuda1-340
+Description-md5: a10363c018e08f69fb7494b3d411a6f6
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-304
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 66
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-304
+Version: 304.132-0ubuntu0.16.04.2
+Replaces: libopencl1
+Provides: libopencl1
+Depends: libc6 (>= 2.2.5)
+Suggests: nvidia-opencl-icd-304
+Conflicts: libopencl1
+Filename: pool/multiverse/n/nvidia-graphics-drivers-304/nvidia-libopencl1-304_304.132-0ubuntu0.16.04.2_amd64.deb
+Size: 15926
+MD5sum: 95b2284f9bb51887dab2417f4b5fa3d5
+SHA1: b4d2970e4ed3f32db24575381c3c380503844ba6
+SHA256: 5e8f00b3d3c14632905e70140f959dec7a68c385504bf70a0dc7a3fb02dc7759
+Description: NVIDIA OpenCL Driver and ICD Loader library
+Description-md5: b847113bb2144ba87848ff3f7ae69ec2
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-304-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 19
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-304
+Version: 304.132-0ubuntu0.16.04.2
+Depends: nvidia-libopencl1-304
+Filename: pool/multiverse/n/nvidia-graphics-drivers-304/nvidia-libopencl1-304-updates_304.132-0ubuntu0.16.04.2_amd64.deb
+Size: 4432
+MD5sum: 9a3adb91a187c3288dadc2a4c78aa80b
+SHA1: 12499ef75cb9c2e94bec5b199ee1d42bd2ef1e7a
+SHA256: 41b23bac1f54fb20f33ef122792d2fffef52cf3ff81008a3887184adf29429a8
+Description: Transitional package for nvidia-libopencl1-304
+Description-md5: b75658e0bed2f0080631d2168d802d7f
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-331
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-libopencl1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-libopencl1-331_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 6596
+MD5sum: 07739474de76b171d300eebed250da92
+SHA1: 722f2ca0f4c3be413ebbfe6b77d1dea3b5ecf7e3
+SHA256: 16896ad10e1ec4c1e7860581adeefe2a364fb72bef8a404529f6b47960832472
+Description: Transitional package for nvidia-libopencl1-340
+Description-md5: c0bc1edc3452a373d95e34ed168d26d3
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-331-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-libopencl1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-libopencl1-331-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 6610
+MD5sum: 96987dfc873e23cfb7e7c4a8a8f92368
+SHA1: 8619ea979b2000aa7f6cc74cb03856488b2747a5
+SHA256: 3339b7e1e04e1da83e3d6ff6b60b733b89e25b6077873293047822902849162b
+Description: Transitional package for nvidia-libopencl1-340
+Description-md5: c0bc1edc3452a373d95e34ed168d26d3
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-340
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 70
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Replaces: libopencl1
+Provides: libopencl1
+Depends: nvidia-340-uvm, libc6 (>= 2.2.5)
+Suggests: nvidia-opencl-icd-340
+Conflicts: libopencl1
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-libopencl1-340_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 16402
+MD5sum: 1ea2f73c6ccb5f4074c47f7f2b2ca438
+SHA1: 8e5d7025551ff4753ead0bfd3b299452761fa78e
+SHA256: 5290d7a9429f8be001d4294f1436a9307aad3fbb07b48c44f1175f8590a73502
+Description: NVIDIA OpenCL Driver and ICD Loader library
+Description-md5: b847113bb2144ba87848ff3f7ae69ec2
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-340-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-libopencl1-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-libopencl1-340-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 6602
+MD5sum: 8d9051c983fa61b6e8daa018375d384e
+SHA1: 71bb979122898b989adabd709eeba75c27656c8e
+SHA256: 63a51eb9d86215fbc9b05517b056bd69e055fbc94f545fd6ab16f3b721e7de52
+Description: Transitional package for nvidia-libopencl1-340
+Description-md5: c0bc1edc3452a373d95e34ed168d26d3
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-libopencl1-361
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-367
+Version: 367.57-0ubuntu0.16.04.1
+Depends: nvidia-libopencl1-367
+Filename: pool/multiverse/n/nvidia-graphics-drivers-367/nvidia-libopencl1-361_367.57-0ubuntu0.16.04.1_amd64.deb
+Size: 4922
+MD5sum: 70e09573a122c7c6aefa2f346e588d84
+SHA1: 94f247cd267468c5d6e3ce294d5e625919543e64
+SHA256: 057342348e91ffab7c5a04c1d1cf6106b84584a638eea10ae316d4263202f246
+Description: Transitional package for nvidia-libopencl1-367
+Description-md5: 81e751bafa04a99aee20554c5d5426c5
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-opencl-icd-331
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-opencl-icd-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-opencl-icd-331_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4820
+MD5sum: cec2507d958ff4b85fe53f7a6512b943
+SHA1: cf41f9869d826946a01a8ecd2c635ebdc57d5034
+SHA256: 7b5ab947eb8ddca92fa857fae773585fbd706e03638b604d5ca9d13a16c19aea
+Description: Transitional package for nvidia-opencl-icd-340
+Description-md5: 5698808952d1d1454e2b98d80ab83d79
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-opencl-icd-331-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-opencl-icd-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-opencl-icd-331-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4840
+MD5sum: 21c8b52d54e57048b14f6d99d712cf73
+SHA1: 7f42e44e4ba8c63bdd1a0c86b8125dd7bd56cc14
+SHA256: 4e80c781711340ccaa3bdd4810d9aaeeea642a7e7bb188edce748afdd764bb65
+Description: Transitional package for nvidia-opencl-icd-340
+Description-md5: 5698808952d1d1454e2b98d80ab83d79
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: nvidia-opencl-icd-340-updates
+Priority: optional
+Section: multiverse/misc
+Installed-Size: 18
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Source: nvidia-graphics-drivers-340
+Version: 340.98-0ubuntu0.16.04.1
+Depends: nvidia-opencl-icd-340
+Filename: pool/multiverse/n/nvidia-graphics-drivers-340/nvidia-opencl-icd-340-updates_340.98-0ubuntu0.16.04.1_amd64.deb
+Size: 4832
+MD5sum: 2985b40808711bfef3722f0f343f749f
+SHA1: 490fdb013bb01b61357ac7ba7bb89bf8f6c8cc3c
+SHA256: bed195391a6960c3c281ad673eed85952f3a65615ae2618ec500e64c2660b1bb
+Description: Transitional package for nvidia-opencl-icd-340
+Description-md5: 5698808952d1d1454e2b98d80ab83d79
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+

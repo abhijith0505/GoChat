@@ -1,0 +1,24 @@
+Origin: Google, Inc.
+Label: Google
+Suite: stable
+Codename: stable
+Version: 1.0
+Date: Thu, 15 Dec 2016 00:46:50 +0000
+Architectures: amd64
+Components: main
+Description: Google chrome-linux repository.
+MD5Sum:
+ 89704f9af9e6ccd87c192de11ba4c511 145 main/binary-amd64/Release
+ d79c7a22e03c9c476d8dac856bb54208 4750 main/binary-amd64/Packages
+ 84b53a70582a55cecb558a3ef4334e08 1147 main/binary-amd64/Packages.gz
+ 06889bbcacf0057b077df04558eac1a7 1440 main/binary-amd64/Packages.bz2
+SHA1:
+ 153199d8f866350b7853365a4adc95ee687603dd 145 main/binary-amd64/Release
+ f22db57f235e2b8159fcd12cafba6eb138633c3d 4750 main/binary-amd64/Packages
+ ddaacb82cd33b6b6b52533a9b7e0c9b88139ca01 1147 main/binary-amd64/Packages.gz
+ 64a93084075dfb22d85ac18dcead0410ade5c376 1440 main/binary-amd64/Packages.bz2
+SHA256:
+ c4e091daa777628bea865f0cd58109e9146fea73ae67019598dc03e87c33289f 145 main/binary-amd64/Release
+ 4b06dc9247ac7fd52b453001eb686630183d375bbf7a818761106f3fa17e57b2 4750 main/binary-amd64/Packages
+ 22971830c88df67910ec2251f80c4fbd7e0729a317b9bb95e0dbebdc308a2c36 1147 main/binary-amd64/Packages.gz
+ a7015f21282902e5e2a824394549ad02f3f7b273e207f154546e2b932a80d4ac 1440 main/binary-amd64/Packages.bz2

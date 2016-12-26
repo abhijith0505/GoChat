@@ -1,0 +1,211 @@
+Package: gimp
+Priority: optional
+Section: graphics
+Installed-Size: 15642
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 2.8.18-0x2~ppa
+Recommends: ghostscript
+Replaces: gimp-plugin-registry (<< 4.20120506)
+Suggests: gimp-help-en | gimp-help, gimp-data-extras, gvfs-backends, libasound2
+Provides: gimp-python
+Depends: libgimp2.0 (>= 2.8.18), libgimp2.0 (<= 2.8.18-z), gimp-data (>= 2.8.18), gimp-data (<= 2.8.18-z), python-gtk2 (>= 2.8.0), libgdk-pixbuf2.0-0 (>= 2.24.1), libaa1 (>= 1.4p5), libbabl-0.1-0 (>= 0.1.10), libbz2-1.0, libc6 (>= 2.15), libcairo2 (>= 1.10.2), libdbus-1-3 (>= 1.9.14), libdbus-glib-1-2 (>= 0.88), libexif12 (>= 0.6.21-1~), libfontconfig1 (>= 2.11.94), libfreetype6 (>= 2.2.1), libgegl-0.3-0 (>= 0.3.0), libglib2.0-0 (>= 2.41.1), libgs9 (>= 8.61.dfsg.1), libgtk2.0-0 (>= 2.24.10), libgudev-1.0-0 (>= 146), libjasper1, libjpeg8 (>= 8c), liblcms2-2 (>= 2.2+git20110628), libmng2 (>= 1.0.10), libpango-1.0-0 (>= 1.29.4), libpangocairo-1.0-0 (>= 1.29.4), libpangoft2-1.0-0 (>= 1.29.4), libpng12-0 (>= 1.2.13-4), libpoppler-glib8 (>= 0.18.0), librsvg2-2 (>= 2.14.4), libtiff5 (>= 4.0.3), libwmf0.2-7 (>= 0.2.8.4), libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxfixes3, libxmu6, libxpm4, zlib1g (>= 1:1.1.4), python:any (>= 2.6.6-7~), python2.7
+Breaks: gimp-plugin-registry (<< 4.20120506)
+Filename: pool/main/g/gimp/gimp_2.8.18-0x2~ppa_amd64.deb
+Size: 4426292
+MD5sum: 25ab0658051f1dc7ac40ecb4e1b3d604
+SHA1: 865b0e85a3490df374d1dc0e76abbecd0ec8b4d8
+SHA256: 1ca668b58661a96e200c98bb6673b5beb2342e151865013ba8f5466ef6330a51
+Description: The GNU Image Manipulation Program
+Description-md5: ad6dd18a09fb86ea4529ac53f33168b9
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: gimp-data
+Source: gimp
+Priority: optional
+Section: graphics
+Installed-Size: 45407
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: all
+Version: 2.8.18-0x2~ppa
+Recommends: gimp
+Replaces: gimp (<< 2.4.0~rc2-2), gimp-python (<< 2.6.0)
+Conflicts: gimp (<< 2.4.0~rc2-2), gimp-python (<< 2.6.0)
+Filename: pool/main/g/gimp/gimp-data_2.8.18-0x2~ppa_all.deb
+Size: 8724336
+MD5sum: 990219d0895e2155593a0f576e2caeda
+SHA1: 71dab5fa2b2abb1fdc68222ddb6279c0b7b1d10e
+SHA256: 5e64772a6032105efc9f63dc91fa7eb0b8fe1f4e9145a879f4a9479ac1a6e0c4
+Description: Data files for GIMP
+Description-md5: f70d84aecd044d27d27535082275ce75
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: libgimp2.0
+Source: gimp
+Priority: optional
+Section: libs
+Installed-Size: 5020
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 2.8.18-0x2~ppa
+Recommends: gimp-data (>= 2.8.18), gimp-data (<= 2.8.18-z)
+Depends: libc6 (>= 2.15), libcairo2 (>= 1.10.2), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.41.1), libgtk2.0-0 (>= 2.24.10), libpango-1.0-0 (>= 1.29.4), libpangocairo-1.0-0 (>= 1.29.4)
+Filename: pool/main/g/gimp/libgimp2.0_2.8.18-0x2~ppa_amd64.deb
+Size: 1720416
+MD5sum: ad2239a91487f5959faac58bfbaba948
+SHA1: f039c1944a49cfc9a7dd4c4afd99bba7c64333cf
+SHA256: 278f5e0cf5bd6d3114305c69fba1795c68694123e71706f6ad024607c04fbfc2
+Description: Libraries for the GNU Image Manipulation Program
+Description-md5: 87c9f62281987fda19082f1b5cc2c95c
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: libgimp2.0-dev
+Source: gimp
+Priority: optional
+Section: libdevel
+Installed-Size: 1857
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 2.8.18-0x2~ppa
+Suggests: libgimp2.0-doc
+Depends: libc6 (>= 2.4), libgimp2.0 (= 2.8.18-0x2~ppa), libglib2.0-0 (>= 2.30.2), libgtk2.0-dev (>= 2.12.5), pkg-config
+Filename: pool/main/g/gimp/libgimp2.0-dev_2.8.18-0x2~ppa_amd64.deb
+Size: 1038624
+MD5sum: 61a6fe0490762bcc2dddd687f01f533f
+SHA1: 2700e970765a692aadb2c24fd8ffd8331f9c637f
+SHA256: f33cebe0377f98a60faf5e4e655fbf2de9cf2d84ccda6c1770b7af3e43c3545f
+Description: Headers and other files for compiling plugins for GIMP
+Description-md5: c7c7d24560c6f749d332154868167ed5
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: libgimp2.0-doc
+Source: gimp
+Priority: optional
+Section: doc
+Installed-Size: 7053
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: all
+Version: 2.8.18-0x2~ppa
+Depends: lynx | www-browser
+Filename: pool/main/g/gimp/libgimp2.0-doc_2.8.18-0x2~ppa_all.deb
+Size: 1295248
+MD5sum: 1f42ca29d63bf676eb3168e8d0b4b37a
+SHA1: e849a20ebc2e66bb5202c82b71b3db02d604cc6b
+SHA256: 8ea6f2a892234275665a361464bfee43b34bacbc0839892b1209efd527074262
+Description: Developers' Documentation for the GIMP library
+Description-md5: 8acaa3767b69bc8f021740c983e4e23a
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: gimp-dbg
+Source: gimp
+Priority: extra
+Section: debug
+Installed-Size: 53956
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 2.8.18-0x2~ppa
+Depends: gimp (= 2.8.18-0x2~ppa) | libgimp2.0 (= 2.8.18-0x2~ppa)
+Filename: pool/main/g/gimp/gimp-dbg_2.8.18-0x2~ppa_amd64.deb
+Size: 12404882
+MD5sum: 04c985bd806b3116a77a0d67cc8e339b
+SHA1: f1929439c2da8c7c062d188f0b7e53fc936a4728
+SHA256: 2781b6a77390077c5c1a1ebba10e28d61518f7007274fbd9d392342a547735a8
+Description: Debugging symbols for GIMP
+Description-md5: 2f9db4a750267fb9aae49799596bcd26
+Original-Maintainer: Ari Pollak <ari@debian.org>
+
+Package: gmic
+Priority: optional
+Section: graphics
+Installed-Size: 5801
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 1:1.7.9-0x0~ppa
+Suggests: gimp-gmic, gmic-zart
+Depends: libc6 (>= 2.14), libcurl3 (>= 7.16.2), libfftw3-double3, libgcc1 (>= 1:3.0), libgomp1 (>= 4.9), libilmbase12 (>= 1.0.1), libjpeg8 (>= 8c), libopencv-core2.4v5, libopencv-highgui2.4v5, libopenexr22 (>= 2.2.0), libpng12-0 (>= 1.2.13-4), libstdc++6 (>= 4.9), libtiff5 (>= 4.0.3), libx11-6, zlib1g (>= 1:1.2.0)
+Filename: pool/main/g/gmic/gmic_1.7.9-0x0~ppa_amd64.deb
+Size: 1894728
+MD5sum: 8d0960a7b297fc909b8499e5183c038e
+SHA1: 6ce2d323c6c410f8ac2e4b35abfa3c0db84826a2
+SHA256: 4381491df49af212ae3a3b0b0c60a3144b35ef40f761345632e7625198b2d975
+Description: GREYC's Magic Image Converter
+Description-md5: 0acf4cf2ebe11b16d18272149e2d5509
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: gimp-gmic
+Source: gmic
+Priority: optional
+Section: graphics
+Installed-Size: 7132
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 1:1.7.9-0x0~ppa
+Suggests: gmic
+Depends: libc6 (>= 2.14), libcurl3 (>= 7.16.2), libfftw3-double3, libgcc1 (>= 1:3.0), libgdk-pixbuf2.0-0 (>= 2.22.0), libgimp2.0 (>= 2.8.0), libglib2.0-0 (>= 2.12.0), libgomp1 (>= 4.9), libgtk2.0-0 (>= 2.12.0), libpng12-0 (>= 1.2.13-4), libstdc++6 (>= 4.9), libx11-6, zlib1g (>= 1:1.2.0), gimp (>= 2.6)
+Enhances: gimp
+Filename: pool/main/g/gmic/gimp-gmic_1.7.9-0x0~ppa_amd64.deb
+Size: 3003502
+MD5sum: 0bba85e6872d2d00373313b41144c1d4
+SHA1: a443a82f0a0b39956f5be3415c93021d5d26cdd9
+SHA256: bd1d398bfdb691defddbee90af6478bc398ab40abd7651d9946294521fc610fb
+Description: GIMP plugin for GREYC's Magic Image Converter
+Description-md5: 6e9b9200c18d2217ddcbaa114bcf8678
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: gmic-zart
+Source: gmic
+Priority: optional
+Section: graphics
+Installed-Size: 4744
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 1:1.7.9-0x0~ppa
+Replaces: gmic (<< 1.5.1.6+dfsg-3~)
+Suggests: gmic
+Depends: libc6 (>= 2.15), libfftw3-double3, libgcc1 (>= 1:3.0), libgomp1 (>= 4.9), libopencv-core2.4v5, libopencv-highgui2.4v5, libopencv-imgproc2.4v5, libqt4-xml (>= 4:4.5.3), libqtcore4 (>= 4:4.8.0), libqtgui4 (>= 4:4.6.1), libstdc++6 (>= 5.2), zlib1g (>= 1:1.2.0)
+Breaks: gmic (<< 1.5.1.6+dfsg-3~)
+Filename: pool/main/g/gmic/gmic-zart_1.7.9-0x0~ppa_amd64.deb
+Size: 1611114
+MD5sum: 271b37689ac4f2563f74841dd68678a6
+SHA1: 8aec448213a099b0ba87d60d579927535dd7a3f3
+SHA256: 677002d8453ec117fc4f2e2d04cafc292c22709e867807d394c959b32ff6e9ea
+Description: GREYC's Magic Image Converter - ZArt
+Description-md5: 7bdce0dad93a692ab2380376d0ee9c9a
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: libgmic1
+Source: gmic
+Priority: optional
+Section: libs
+Installed-Size: 5922
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 1:1.7.9-0x0~ppa
+Depends: libc6 (>= 2.14), libcurl3 (>= 7.16.2), libfftw3-double3, libgcc1 (>= 1:3.0), libgomp1 (>= 4.9), libjpeg8 (>= 8c), libpng12-0 (>= 1.2.13-4), libstdc++6 (>= 4.9), libtiff5 (>= 4.0.3), libx11-6, zlib1g (>= 1:1.2.0)
+Filename: pool/main/g/gmic/libgmic1_1.7.9-0x0~ppa_amd64.deb
+Size: 1898474
+MD5sum: 5e6415f067a83f79ac1fda2164b1de96
+SHA1: 9fcc283495acdf86b362924fb9f97ccfe848337b
+SHA256: 05ea7f4985c55844217e9423385a42424f68e59c1cffc614f4739da9af7f6cf5
+Description: GREYC's Magic for Image Computing - shared library
+Description-md5: 4d6263ec41facfa9c6de9e783f002c1b
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: libgmic-dev
+Source: gmic
+Priority: optional
+Section: libdevel
+Installed-Size: 59
+Maintainer: Otto Meier <otto@kesselgulasch.org>
+Architecture: amd64
+Version: 1:1.7.9-0x0~ppa
+Depends: libgmic1 (= 1:1.7.9-0x0~ppa)
+Filename: pool/main/g/gmic/libgmic-dev_1.7.9-0x0~ppa_amd64.deb
+Size: 20318
+MD5sum: 7a3e2230a94c2c8e24a6130ec638912a
+SHA1: 59883aec8e68c221bc2ff5b9f411c4585dd46403
+SHA256: 3329dc265ea5864e9c91610b055fb60f55194de159c4c10f57e48e6765012389
+Description: GREYC's Magic for Image Computing - development files
+Description-md5: 4804366e56f7ce6281f558af3635f4e1
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+

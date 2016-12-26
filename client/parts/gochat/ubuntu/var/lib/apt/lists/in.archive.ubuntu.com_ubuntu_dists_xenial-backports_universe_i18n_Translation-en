@@ -1,0 +1,71 @@
+Package: ansible
+Description-md5: db2b21b0d2286fccc4401d5982361488
+Description-en: Configuration management, deployment, and task execution system
+ Ansible is a radically simple model-driven configuration management,
+ multi-node deployment, and remote task execution system. Ansible works
+ over SSH and does not require any software or daemons to be installed
+ on remote nodes. Extension modules can be written in any language and
+ are transferred to managed machines automatically.
+
+Package: appstream-index
+Description-md5: 303e99a55dc11a5b27161702a0cd1d09
+Description-en: Transitional package (appstream-index -> appstream)
+ Transitional dummy package replacing appstream-index with
+ appstream.
+
+Package: bsdcpio
+Description-md5: 0d0614fc5b8366385e38162f0cfff695
+Description-en: transitional dummy package for moving bsdcpio to libarchive-tools
+ The bsdcpio program is the default system 'cpio' program used on FreeBSD.
+ bsdcpio uses the libarchive library as a backend which does all of the work for
+ reading and writing archives in various formats.
+ .
+ This is a transitional package for the migration of the bsdcpio tool to
+ the libarchive-tools package.
+
+Package: bsdtar
+Description-md5: 74b38cb72c3d7fd4cf1c23df80a00577
+Description-en: transitional dummy package for moving bsdtar to libarchive-tools
+ The bsdtar program is the default system 'tar' program used on FreeBSD. bsdtar
+ uses the libarchive library as a backend which does all of the work for reading
+ and writing archives in various formats.
+ .
+ This is a transitional package for the migration of the bsdtar tool to
+ the libarchive-tools package.
+
+Package: dh-systemd
+Description-md5: 67a68071a0cbbaa9df2bcd81ec5a29b1
+Description-en: debhelper add-on to handle systemd unit files - transitional package
+ This package is for transitional purposes and can be removed safely.
+
+Package: ldc
+Description-md5: 486f2a4a0d475755a0957a9b047ea2ef
+Description-en: LLVM D Compiler
+ LDC is a compiler for the D programming Language. It is based on the
+ latest DMD frontend and uses LLVM as backend.
+ .
+ This is the actual ldc compiler
+
+Package: libmustache-d-dev
+Description-md5: dd778293605d48aeb3ccb2c396a14f94
+Description-en: Mustache rendering engine for D
+ Mustache is a push-strategy (a.k.a logic-less) template engine.
+ .
+ This package contains an implementation in the D programming language.
+
+Package: libphobos2-ldc-dev
+Description-md5: b341b8776d65d648c3d9a2d216c9f827
+Description-en: LLVM D Compiler - Phobos2 Standard library, imports
+ LDC is a compiler for the D programming Language. It is based on the
+ latest DMD frontend and uses LLVM as backend.
+ .
+ This package includes the D imports for Phobos2 Standard Library
+
+Package: libphobos2-ldc71
+Description-md5: 008779e61b9f161b2f64c0069b695f3a
+Description-en: LLVM D Compiler - Phobos2 Standard library, shared objects
+ LDC is a compiler for the D programming Language. It is based on the
+ latest DMD frontend and uses LLVM as backend.
+ .
+ This package includes the libs for Phobos2 Standard Library
+

@@ -1,0 +1,110 @@
+Package: gimp
+Description-md5: ad6dd18a09fb86ea4529ac53f33168b9
+Description-en: The GNU Image Manipulation Program
+ GIMP is an advanced picture editor. You can use it to edit, enhance, and
+ retouch photos and scans, create drawings, and make your own images.
+ It has a large collection of professional-level editing tools and
+ filters, similar to the ones you might find in Photoshop. Numerous
+ fine-control settings and features like layers, paths, masks, and
+ scripting give you total control over your images.
+ .
+ Many image file formats are supported, including JPEG, Photoshop (.psd),
+ and Paint Shop Pro (.psp) files. It can also be used to scan and print
+ photos.
+ .
+ To open files remotely (like over HTTP), install the gvfs-backends
+ package.
+ .
+ To use a MIDI device (like a musical keyboard) as an input controller in GIMP,
+ install libasound2 and read the how-to at /usr/share/doc/gimp/README.MIDI
+
+Package: gimp-data
+Description-md5: f70d84aecd044d27d27535082275ce75
+Description-en: Data files for GIMP
+ This package contains architecture-independent supporting data files
+ for use with GIMP.
+
+Package: libgimp2.0
+Description-md5: 87c9f62281987fda19082f1b5cc2c95c
+Description-en: Libraries for the GNU Image Manipulation Program
+ This package includes the libgimp libraries, which are
+ necessary to run GIMP and third-party GIMP plugins.
+
+Package: libgimp2.0-dev
+Description-md5: c7c7d24560c6f749d332154868167ed5
+Description-en: Headers and other files for compiling plugins for GIMP
+ This package contains the header files for the GNU Image Manipulation
+ Program, along with the static versions of libgimp.
+ It also includes the gimptool-2.0 utility.
+ .
+ Install this package if you wish to compile your own plugins,
+ or if you wish to develop packages that use libgimp.
+
+Package: libgimp2.0-doc
+Description-md5: 8acaa3767b69bc8f021740c983e4e23a
+Description-en: Developers' Documentation for the GIMP library
+ This package contains the HTML documentation for the GIMP library in
+ /usr/share/gtk-doc/html/ .
+
+Package: gimp-dbg
+Description-md5: 2f9db4a750267fb9aae49799596bcd26
+Description-en: Debugging symbols for GIMP
+ This package includes the debugging symbols useful for debugging
+ GIMP and its libraries, contained in the gimp and libgimp2.0 packages.
+ The debugging symbols are used for execution tracing and core dump
+ analysis.
+
+Package: gmic
+Description-md5: 0acf4cf2ebe11b16d18272149e2d5509
+Description-en: GREYC's Magic Image Converter
+ G'MIC is an interpreter of image processing macros whose goal is to
+ convert, manipulate and visualize generic 1D/2D/3D multi-spectral
+ image files. This includes classical color images, but also more
+ complex data as image sequences or 3D volumetric images.
+ .
+ This package contains the stand-alone gmic binary.
+
+Package: gimp-gmic
+Description-md5: 6e9b9200c18d2217ddcbaa114bcf8678
+Description-en: GIMP plugin for GREYC's Magic Image Converter
+ G'MIC is an interpreter of image processing macros whose goal is to
+ convert, manipulate and visualize generic 1D/2D/3D multi-spectral
+ image files. This includes classical color images, but also more
+ complex data as image sequences or 3D volumetric images.
+ .
+ This package contains the GIMP plugin.
+
+Package: gmic-zart
+Description-md5: 7bdce0dad93a692ab2380376d0ee9c9a
+Description-en: GREYC's Magic Image Converter - ZArt
+ G'MIC is an interpreter of image processing macros whose goal is to
+ convert, manipulate and visualize generic 1D/2D/3D multi-spectral
+ image files. This includes classical color images, but also more
+ complex data as image sequences or 3D volumetric images.
+ .
+ This package contains ZArt, a program whose purpose is to demonstrate
+ the possibilities of the G'MIC image processing language by offering
+ the choice of several manipulations on a video stream acquired from a
+ webcam. In other words, ZArt is a GUI for G'MIC real-time manipulations
+ on the output of a webcam.
+
+Package: libgmic1
+Description-md5: 4d6263ec41facfa9c6de9e783f002c1b
+Description-en: GREYC's Magic for Image Computing - shared library
+ G'MIC is an open and full-featured framework for image processing,
+ providing several different user interfaces to
+ convert/manipulate/filter/visualize generic image datasets, from 1d
+ scalar signals to 3d+t sequences of multi-spectral volumetric images.
+ .
+ This package contains the shared library.
+
+Package: libgmic-dev
+Description-md5: 4804366e56f7ce6281f558af3635f4e1
+Description-en: GREYC's Magic for Image Computing - development files
+ G'MIC is an open and full-featured framework for image processing,
+ providing several different user interfaces to
+ convert/manipulate/filter/visualize generic image datasets, from 1d
+ scalar signals to 3d+t sequences of multi-spectral volumetric images.
+ .
+ This package contains the development files for libgmic.
+
