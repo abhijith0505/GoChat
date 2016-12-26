@@ -24,7 +24,7 @@ def registerUser(username, password):
     json_data = json.dumps(data)
     headers = {'Content-type': 'application/json'}
     response = requests.post(url, data=json_data, headers=headers)
-    if response != "exists":
+    if response.text != "exists":
 	    try:
 	        db.user.insert_one({'username':username, 'password': hash_pass(password)})
 	    except:
@@ -57,7 +57,7 @@ def sendMessage(recipient, message):
 		return response.text
 	else:
 		return "No such user exists!"
-	
+
 
 def unreadMessages():
 	selfUser = db.user.find_one()
@@ -66,10 +66,10 @@ def unreadMessages():
 
 	url = variables.AWSEndPoint + "/getNewMessages"
 	response = requests.get(url, auth=(selfUserName, selfPassword))
-	
+
 	data = json.loads(response.text)
 	db.messages.insert(data)
-	
+
 	return response.text
 
 
@@ -85,4 +85,3 @@ def hash_pass(password):
 def test():
 	response = [{"timestamp": 1481886764, "message": "hihhi", "from": "sha"}]
 	print json.dumps(response)
-

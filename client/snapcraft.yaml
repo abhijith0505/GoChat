@@ -1,5 +1,5 @@
 name: gochat
-version: 0.0.1
+version: 0.0.2
 summary: A command line chat app with a serverless backend
 description: A command line chat app with a serverless backend
 confinement: strict
@@ -8,7 +8,7 @@ grade: stable
 apps:
   gochat:
     command: gochat
-    plugs: [home, network, network-bind]
+    plugs: [network, network-bind]
 
 parts:
   gochat:

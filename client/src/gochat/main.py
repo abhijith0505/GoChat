@@ -24,7 +24,10 @@ def main(args=None):
     parser.add_argument('-u', '--unread', action='store_true', dest='unread',
     					help='Read your unread messages')
 
-    parser.add_argument('--version', '-v', action='version', version='%(prog)s 1.0')
+    parser.add_argument('-m', '--messages', action='store', metavar="username", dest='messagesRead', nargs='?',
+    					help='Read all previous messages')
+
+    parser.add_argument('--version', '-v', action='version', version='%(prog)s 0.0.2')
 
     if len(sys.argv) < 2:
     	parser.print_usage()
@@ -36,6 +39,7 @@ def main(args=None):
     deleteUser = args.deleteUser
     send = args.send
     unread = args.unread
+    messagesRead = args.messagesRead
 
     if register:
     	selfUser = db.user.find_one()
@@ -64,13 +68,13 @@ def main(args=None):
     		parser.print_help()
     		print ""
 
-    if deleteUser:
+    elif deleteUser:
     	if apiHelper.deleteUser():
-    		print "Your computer is free from GOChatCLI accounts now"
+    		print "Your computer is free from GOChat accounts now"
     	else:
     		print "There is nothing to delete, please register an account, so that you can delete it later."
 
-    if send:
+    elif send:
     	selfUser = db.user.find_one()
     	if selfUser:
     		selfUserName = selfUser['username']
@@ -92,7 +96,7 @@ def main(args=None):
     	else:
     		print "Please register your user first"
 
-    if unread:
+    elif unread:
     	selfUser = db.user.find_one()
     	if selfUser:
     		try:
@@ -106,11 +110,30 @@ def main(args=None):
     				messageToBeStored = {}
     				messageToBeStored['timestamp'] = msg['timestamp']
     				messageToBeStored['message'] = msg['message']
+    				messageToBeStored['from'] = msg['from']
     				messagesToBeStored.append(messageToBeStored)
+    			db.messages.insert(messagesToBeStored)
     		except:
     			print "No New Messages"
     	else:
     		print "Please register your user first"
 
+    elif not messagesRead:
+    	for msg in db.messages.find():
+    		message = msg['message']
+    		sender = msg['from']
+    		timestamp = msg['timestamp']
+    		print ('From: {}'.format(msg['from']))
+    		print ('{}: {}'.format(msg['timestamp'], msg['message']))
+    		print "-"*80
+
+    elif messagesRead:
+    	for msg in db.messages.find({'from':messagesRead}):
+    		message = msg['message']
+    		sender = msg['from']
+    		timestamp = msg['timestamp']
+    		print ('From: {}'.format(msg['from']))
+    		print ('{}: {}'.format(msg['timestamp'], msg['message']))
+    		print "-"*80
 if __name__ == "__main__":
-    main()    
+    main()

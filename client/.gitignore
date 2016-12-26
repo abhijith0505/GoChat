@@ -3,3 +3,7 @@ variables*
 variables/
 goChat.go
 test*
+parts/
+prime/
+stage/
+*.snap
