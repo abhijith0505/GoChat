@@ -68,7 +68,7 @@ def unreadMessages():
 	response = requests.get(url, auth=(selfUserName, selfPassword))
 
 	data = json.loads(response.text)
-	db.messages.insert(data)
+	#db.messages.insert(data)
 
 	return response.text
 
