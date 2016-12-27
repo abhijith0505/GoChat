@@ -4,7 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 from requests.auth import HTTPBasicAuth
 
-client = MongoClient()
+client = MongoClient("mongodb://localhost:26969/")
 db = client['gochat']
 user = db['user']
 messages = db['messages']
@@ -27,8 +27,8 @@ def registerUser(username, password):
     if response.text != "exists":
 	    try:
 	        db.user.insert_one({'username':username, 'password': hash_pass(password)})
-	    except:
-	    	pass
+	    except e:
+	    	print e
 
     return response.text
 
