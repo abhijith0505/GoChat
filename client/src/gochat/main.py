@@ -4,7 +4,7 @@ import apiHelper
 
 def main(args=None):
 
-    client = MongoClient()
+    client = MongoClient("mongodb://localhost:26969/")
     db = client['gochat']
     user = db['user']
     messages = db['messages']

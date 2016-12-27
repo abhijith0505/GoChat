@@ -1,5 +1,5 @@
 name: gochat
-version: 0.0.2
+version: 0.1.0
 summary: A command line chat app with a serverless backend
 description: A command line chat app with a serverless backend
 confinement: strict
@@ -9,9 +9,25 @@ apps:
   gochat:
     command: gochat
     plugs: [network, network-bind]
-
+  mongo:
+    command: env LC_ALL=C mongod --bind_ip 127.0.0.1 --smallfiles --dbpath=$SNAP_COMMON --port 26969
+    daemon: simple
+    plugs: [network, network-bind]
 parts:
   gochat:
     plugin: python
     source: src
     python-version: "python2"
+  mongodb:
+    source: https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.2.7.tgz
+    plugin: dump
+    stage-packages:
+      - libssl1.0.0
+    stage:
+      - usr
+      - bin
+      - lib
+    snap:
+      - usr
+      - bin
+      - lib
