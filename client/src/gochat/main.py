@@ -1,4 +1,4 @@
-import argparse, getpass, sys, json, time, pymongo, textwrap
+import argparse, getpass, sys, json, time, pymongo, textwrap, os
 from pymongo import MongoClient
 import apiHelper
 
@@ -11,8 +11,7 @@ def main(args=None):
     user.ensure_index('username',unique=True)
 
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
-    	description= textwrap.dedent('''	GoChat - a terminal chat application - is here!
-    	Crafted with love by Sharath Huddar and Abhijith C'''))
+    	description= textwrap.dedent('''	GoChat - a terminal chat application - is here!'''))
 
     parser.add_argument('-r', '--register', action='store_true', dest='register',
     					help='Register user')
@@ -32,6 +31,12 @@ def main(args=None):
     parser.add_argument('--version', '-v', action='version', version='%(prog)s 0.0.2')
 
     if len(sys.argv) < 2:
+    	print "\n"
+    	os.system("figlet -cktf banner \"GoChat\"")
+    	print "\n"
+    	print "Crafted by Sharath Huddar and Abhijith C."
+    	print "\n"
+    	print "Refer Help (--help)"
     	parser.print_usage()
     	sys.exit(1)
 
