@@ -1,6 +1,7 @@
 import argparse, getpass, sys, json, time, pymongo, textwrap, os
 from pymongo import MongoClient
 import apiHelper
+from pyfiglet import Figlet
 
 def main(args=None):
 
@@ -28,11 +29,12 @@ def main(args=None):
     parser.add_argument('-m', '--messages', action='store', metavar="username", dest='messagesRead', nargs='?',
     					help='Read all previous messages')
 
-    parser.add_argument('--version', '-v', action='version', version='%(prog)s 0.0.2')
+    parser.add_argument('--version', '-v', action='version', version='%(prog)s 0.1.2')
 
     if len(sys.argv) < 2:
     	print "\n"
-    	os.system("figlet -cktf banner \"GoChat\"")
+        f = Figlet(font='banner')
+        print f.renderText('GoChat')
     	print "\n"
     	print "Crafted by Sharath Huddar and Abhijith C."
     	print "\n"
