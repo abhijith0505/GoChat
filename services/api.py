@@ -44,6 +44,7 @@ def registerUser():
     user = {
         'username': request.json['username'],
         'password': request.json['password'],
+        'publicKey': request.json['publicKey'],
         'newMessages': [],
         'isOnline': False
     }
