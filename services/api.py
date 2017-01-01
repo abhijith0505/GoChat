@@ -56,7 +56,7 @@ def registerUser():
     try:
         response['Item']['username']
         return "exists"
-    except :
+    except:
         response = goChatUsersTable.put_item(
             Item=user
         )
@@ -92,6 +92,20 @@ def setOnlineStatus():
         }
     )
     return str(request.json['isOnline'])
+
+
+@app.route('/getPublicKey', methods=['POST'])
+def getPublicKey():
+    if not request.json or not 'username' in request.json:
+        abort(400)
+    response=goChatUsersTable.get_item(
+        Key={
+            'username': request.json['username']
+        }
+    )
+    publicKey = response['Item']['publicKey']
+    if publicKey:
+        return publicKey
 
 
 # curl -i -H "Content-Type: application/json" -u usrnm:pwd -X POST -d

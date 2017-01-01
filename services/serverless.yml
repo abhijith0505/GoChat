@@ -56,6 +56,10 @@ functions:
           path: getUsers
           method: get
           integration: lambda-proxy
+      - http:
+          path: getPublicKey
+          method: post
+          integration: lambda-proxy
 
 resources:
   Resources:

@@ -17,7 +17,7 @@ parts:
   gochat:
     plugin: python
     source: src
-    python-version: "python2"
+    python-version: "python3"
   mongodb:
     source: https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.2.7.tgz
     plugin: dump
