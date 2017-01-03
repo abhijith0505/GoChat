@@ -64,7 +64,7 @@ To know the version of your app.
 
 ```
 $ gochat --version
-gochat 0.1.2
+gochat 1.0.1
 ```
 
 ###Send Message
