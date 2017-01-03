@@ -73,7 +73,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: 'goChatUsers'
+        TableName: goChatUsers-${opt:stage}
 
 
 custom:

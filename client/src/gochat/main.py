@@ -29,7 +29,7 @@ def main(args=None):
     parser.add_argument('-m', '--messages', action='store', metavar="username", dest='messagesRead', nargs='?',
     					help='Read all previous messages')
 
-    parser.add_argument('--version', '-v', action='version', version='%(prog)s 0.1.2')
+    parser.add_argument('--version', '-v', action='version', version='%(prog)s 1.0.1')
 
     if len(sys.argv) < 2:
     	print "\n"
@@ -145,4 +145,12 @@ def main(args=None):
     		print ('{}: {}'.format(msg['timestamp'], msg['message']))
     		print "-"*80
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print
+        print  ('Interrupted')
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)

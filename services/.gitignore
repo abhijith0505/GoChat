@@ -1,4 +1,5 @@
 node_modules/
 python_modules/
 .serverless/
-npm-debug.log
+npm-debug.log*
+pip-selfcheck.json

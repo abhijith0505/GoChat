@@ -17,7 +17,7 @@ here = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(here, "./python_modules"))
 
 dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-1')
-goChatUsersTable = dynamodb.Table('goChatUsers')
+goChatUsersTable = dynamodb.Table('goChatUsers-prod')
 
 # Helper class to convert a DynamoDB item to JSON.
 
