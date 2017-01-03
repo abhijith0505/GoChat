@@ -42,6 +42,7 @@ Usage
 ![](https://github.com/abhijith0505/GoChat/blob/master/screenshots/gochathelp.png)
 
 ###Register
+You need to register your user to message others. After all, they need to know who is messaging them :P
 ```
 $ gochat --register
 Username: tony_stark
@@ -51,5 +52,53 @@ User created!
 
 > Note: Current version allows only one user per system
 
+###Delete User
+This delete your user, along with all messages. Delete wisely.
+```
+$ gochat --delete-user
+Your computer is free from GoChat accounts now
+```
 
+###Version
+To know the version of your app.
 
+```
+$ gochat --version
+gochat 0.1.2
+```
+
+###Send Message
+You need to know before hand the username of the person you want to message. 
+(Yes, we are working on this to make it simpler)
+```
+$ gochat --send
+Username: tony_stark
+Message: How you doin'?
+Message sent successfully!
+```
+
+###To read your unread messages
+This shows all your unread messages from all users.
+
+```
+$ gochat --unread
+
+```
+
+###To read your messages
+
+For all previous messages
+```
+$ gochat --messages
+```
+
+For all messages from a particular user
+```
+$ gochat --messages capn_america
+```
+
+---------
+
+Issues and Improvements
+=====
+Please report issues and suggest improvements [here](https://github.com/abhijith0505/GoChat/issues).
