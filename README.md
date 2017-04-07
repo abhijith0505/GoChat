@@ -41,7 +41,7 @@ Usage
 
 ![](https://github.com/abhijith0505/GoChat/blob/master/screenshots/gochathelp.png)
 
-##Register
+## Register
 
 You need to register your user to message others. After all, they need to know who is messaging them :P
 ```
@@ -53,7 +53,7 @@ User created!
 
 > Note: Current version allows only one user per system
 
-##Delete User
+## Delete User
 
 This delete your user, along with all messages. Delete wisely.
 ```
@@ -61,7 +61,7 @@ $ gochat --delete-user
 Your computer is free from GoChat accounts now
 ```
 
-##Version
+## Version
 
 To know the version of your app.
 
@@ -70,7 +70,7 @@ $ gochat --version
 gochat 1.0.1
 ```
 
-##Send Message
+## Send Message
 
 You need to know before hand the username of the person you want to message. 
 (Yes, we are working on this to make it simpler)
@@ -81,7 +81,7 @@ Message: How you doin'?
 Message sent successfully!
 ```
 
-##To read your unread messages
+## To read your unread messages
 
 This shows all your unread messages from all users.
 
@@ -90,7 +90,7 @@ $ gochat --unread
 
 ```
 
-##To read your messages
+## To read your messages
 
 For all previous messages
 ```
