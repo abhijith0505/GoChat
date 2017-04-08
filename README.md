@@ -23,7 +23,7 @@ Installation
 	 
  - For other distributions please refer [this](http://snapcraft.io/docs/core/install).
 
-Install GoChat using
+### Install GoChat using
 ```
 sudo snap install gochat
 ```
