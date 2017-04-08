@@ -1,4 +1,4 @@
-GoChat
+<a name="head"></a>GoChat
 ===================
 
 
@@ -107,3 +107,5 @@ $ gochat --messages capn_america
 Issues and Improvements
 =====
 Please report issues and suggest improvements [here](https://github.com/abhijith0505/GoChat/issues).
+
+[Go to top](#head)
