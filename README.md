@@ -108,4 +108,9 @@ Issues and Improvements
 =====
 Please report issues and suggest improvements [here](https://github.com/abhijith0505/GoChat/issues).
 
+
+> We do not store your messages/conversations. They are deleted from the server as soon as the recipient reads them.
+
+> The platform isn't secure, yet. So, urge you not to talk confidential information such as Bank account number, credit card number, etc using GoChat. There are always bad people watching (not us :P).
+
 [Go to top](#head)
