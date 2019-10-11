@@ -2,13 +2,10 @@
 ===================
 
 
-The terminal chat message application is here!.
+The terminal chat message application is here!
 Wanted to send messages without leaving your terminal window? This is your answer!
 
 ![](https://github.com/abhijith0505/GoChat/blob/master/screenshots/gochat.png)
-
-Find it [here](http://go-chat.ml/)
-----------
 
 
 Installation
