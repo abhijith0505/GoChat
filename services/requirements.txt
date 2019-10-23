@@ -1,4 +1,4 @@
-Flask==0.11.1
+Flask==1.0
 boto3==1.4.1
 flask-httpauth==3.2.1
 requests
