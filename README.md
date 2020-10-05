@@ -1,4 +1,4 @@
-<a name="head"></a> [GoChat](http://go-chat.ml/)
+# GoChat
 ===================
 
 
